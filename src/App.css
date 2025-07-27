@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+body {
+  margin: 0;
+  font-family: Poppins;
+  background-color: #010824;
+  color: #eee;
+  min-height: 100vh;
+  font-size: 15px;
+  background-image: repeating-linear-gradient(to right, transparent 0 49px, #eee1 49px 50px),
+    repeating-linear-gradient(to bottom, transparent 0 49px, #eee1 49px 50px);
+
+  &::before {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    content: '';
+    background-image: linear-gradient(to right, #d02e23, #7a43b6);
+    z-index: -1;
+    top: -200px;
+    left: calc(50% - 200px);
+    border-radius: 50% 50% 0 0;
+    pointer-events: none;
+    filter: blur(250px);
+  }
+
+}
+
+main {
+  width: min(1300px, 100%);
+  margin: auto;
+}
+
+header {
+  position: fixed;
+  width: min(1300px, 100%);
+  height: 60px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+
+  &.scrolled {
+    backdrop-filter: blur(20px);
+    background-color: rgba(1, 8, 36, 0.9);
+    border-bottom: 1px solid #eee2;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  & .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    #img {
+      width: 50px;
+      height: 50px;
+      color: #e945e3;
+      transition: all 0.3s ease;
+    }
+
+    .logo-text {
+      font-family: 'MuseoModerno', system-ui;
+      font-size: 1.2rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #d02e23, #7a43b6);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  & nav {
+    display: flex;
+    gap: 30px;
+    position: relative;
+
+    & span {
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-transform: capitalize;
+      position: relative;
+
+      &:hover {
+        background-color: rgba(238, 238, 238, 0.1);
+        transform: translateY(-2px);
+      }
+
+      &.active {
+        color: #e945e3;
+        text-shadow: 0 0 10px #7A43B6;
+        background: linear-gradient(45deg, rgba(224, 46, 35, 0.1), rgba(122, 67, 182, 0.1));
+        border: 1px solid rgba(233, 69, 227, 0.3);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(45deg, #d02e23, #7a43b6);
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+      }
+
+      &.active::before {
+        width: 80%;
+      }
+    }
+  }
+
+  .nav-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(45deg, #d02e23, #7a43b6);
+    transition: all 0.3s ease;
+    border-radius: 2px 2px 0 0;
+  }
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  header {
+    padding: 0 15px;
+
+    & .logo .logo-text {
+      display: none;
+    }
+
+    & nav {
+      gap: 15px;
+
+      & span {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    height: 50px;
+
+    & .logo #img {
+      width: 40px;
+      height: 40px;
+    }
+
+    & nav {
+      gap: 10px;
+
+      & span {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+section {
+  margin: auto;
+  width: min(1300px, 100%);
+  padding: 50px;
+  box-sizing: border-box;
+
+  &.home {
+    padding-top: 150px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    /* justify-content: space-between; */
+    justify-content: space-between;
+    align-items: center;
+
+    .content {
+      font-family: 'MuseoModerno', system-ui;
+
+      .name {
+        font-size: 5em;
+        font-weight: bold;
+        line-height: 1.3em;
+
+        span {
+          /* font-size: 3em; */
+          background-image: linear-gradient(to right, #7BE728, #F3265f, #7F40AC, #7BE728);
+          background-size: 200% auto;
+          animation: gradientAnimation 2s linear infinite;
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+        }
+      }
+    }
+
+    .dis {
+      color: #eee5;
+      margin: 30px 0;
+      border-left: .7em solid #e945e3;
+      padding-left: 2em;
+    }
+
+    a {
+      text-decoration: none;
+      color: #eee;
+      font-size: large;
+      font-weight: bold;
+      border-radius: 2em;
+      border: 1px solid #eee;
+      padding: 20px 30px;
+      margin-top: 30px;
+      display: block;
+      width: max-content;
+      transition: 0.5s ease;
+
+      &:hover {
+        background-color: #eee;
+        border: #010824;
+        color: #010824;
+      }
+    }
+  }
+
+  .avatar {
+    text-align: right;
+
+    & .card {
+      display: inline-flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      width: min(100%, 400px);
+      box-shadow: 0 150px 150px #e945e333;
+
+      &:hover {
+        box-shadow: 0 150px 150px #e945e355;
+      }
+
+      & img {
+        width: 100%;
+        height: min(700px, 50vh);
+        object-fit: cover;
+        object-position: top;
+        clip-path: polygon(81% 0, 100% 18%, 100% 100%, 0 100%, 0 0);
+      }
+
+      & .info {
+        background-color: #eee;
+        color: #010824;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+        font-size: 1.2rem;
+
+        & div:nth-child(-n + 3) {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &.skills {
+    & .title {
+      text-align: center;
+      font-size: 3rem;
+      font-family: 'MuseoModerno', 'system-ui';
+      /* font-weight: bold; */
+    }
+
+    & .des {
+      color: #eee5;
+      text-align: center;
+      max-width: 500px;
+      margin: auto;
+    }
+
+    & .list {
+      margin-top: 50px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      justify-content: space-between;
+      gap: 3rem;
+
+      &::before {
+        position: absolute;
+        height: 50%;
+        width: 50%;
+        content: '';
+        transform: translate(-50%, -50%);
+        background-image: linear-gradient(-45deg, red, blue);
+        top: 158%;
+        left: 50%;
+        z-index: -1;
+        border-radius: 20px;
+        background-size: 200% auto;
+      }
+
+      & .item {
+        backdrop-filter: blur(50px);
+        padding: 20px;
+        border-radius: 20px;
+        background-color: #01082488;
+
+        & svg {
+          font-size: 2rem;
+          background-color: #eee3;
+          padding: 10px;
+          border-radius: 10px;
+        }
+
+        & .des {
+          text-align: left;
+          font-size: small;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@keyframes gradientAnimation {
+  to {
+    background-position: 200% center;
+  }
+}
