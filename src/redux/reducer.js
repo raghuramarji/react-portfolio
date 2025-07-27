@@ -1,8 +1,8 @@
-const insitialState = {
+const initialState = {
     activeTab : 'home'
 }
 
-const rootReducer = (state = insitialState, action) =>{
+const rootReducer = (state = initialState, action) =>{
     switch(action.type){
         case 'ACTIVE_TAB':
             return{...state, activeTab : action.payload}
